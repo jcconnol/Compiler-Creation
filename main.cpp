@@ -1,15 +1,24 @@
-int main()
-{
-  FileMap file(L"C:\\temp\\Sample.b");
+/* 
+ * File:   main.cpp
+ * Author: John Connolly
+ *
+ * Created on November 5, 2018, 9:16 PM
+ */
 
-  if (!file)
-  {
-    printf("Error: failed to open file\n");
-    return 1;
-  }
+#include <cstdlib>
+#include "Lexicon.h"
 
-  printf("Source: %.*s\n", file.Size(), file.Begin());
+using std:string;
 
-  Scanner scanner(file.Begin(), file.End());
-  
+int main() {
+    
+    string filename = "";
+    
+    //Reads and breaks up the file into tokens
+    Lexicon lex = Lexicon(filename);
+    
+    lex.execute();
+    
+    return 0;
 }
+
