@@ -10,11 +10,13 @@
 #include "ErrorHandler.h"
 
 ErrorHandler::ErrorHandler(){
-    
+    errorMethod = new ErrorMethod;
 }
 
-void ErrorHandler::errorMessages(int input){
-    
+void ErrorHandler::errorMessages(int lineNumber, Token tok, int error){
+    if(error == 0){
+        errorMessage = errorMethod.NO_ERROR;
+    }
 }
 
 void ErrorHandler::display(){

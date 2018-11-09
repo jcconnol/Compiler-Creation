@@ -1,8 +1,14 @@
 
 #include "Lexicon.h"
 
+Lexicon::Lexicon(){
+    this->fileName = "";
+    errorHandler = new ErrorHandler();
+}
+
 Lexicon::Lexicon(string fileName){
     this->fileName = fileName;
+    errorHandler = new ErrorHandler();
 }
 
 void Lexicon::tokenize(string input){
@@ -16,7 +22,7 @@ void Lexicon::tokenize(string input){
         if(delim.find(input[i]) != string::npos){
             //adds substring before delimiter to vector
             tok_part = input.substr(beg, i-beg);
-            tok_part.erase(remove(tok_part.begin(), tok_part.end(), ' '), tok_part.end());
+            tok_part.std::string::erase(remove(tok_part.begin(), tok_part.end(), ' '), tok_part.end());
             if( space.find(tok_part) == string::npos){
                 tokenized.push_back(Token(tok_part));
             }
@@ -35,16 +41,22 @@ void Lexicon::tokenize(string input){
     if(input.find_last_of(delim)+1 != input.size()){
         int last_pos = input.find_last_of(delim);
         string tok_part = input.substr(last_pos+1, input.size());
-        tok_part.erase(remove(tok_part.begin(), tok_part.end(), ' '), tok_part.end());
-        if(space.find(tok_part) == string::npos){
+        tok_part.erase(std::remove(tok_part.begin(), tok_part.end(), ' '), tok_part.end());
+        if(space.std::find(tok_part) == string::npos){
             tokenized.push_back(Token(tok_part));
         }
     }
 }
 
-int Lexicon::read(){
+bool Lexicon::read(){
     //reads file and tokenizes
-    return 0;
+    ifstream file(fileName);
+    if(file.is_open()){
+        
+    }
+    else{
+        return false;
+    }
 }
 
 vector<Token> Lexicon::getTokenized(){
@@ -53,15 +65,16 @@ vector<Token> Lexicon::getTokenized(){
 
 void Lexicon::execute(){
     //runs everything
-    if(!read()){
-        errorCheck();
+    if(read()){
+        //add to symbol checking thing
+        
     }
     else{
-        //add to symbol checking thing
+        errorCheck(0, new Token(), 1);
     }
 }
 
-void Lexicon::errorCheck(){
+void Lexicon::errorCheck(int lineNum, Token tok, int error){
     //send to error class to output and exit
-    
+    errorHandler.errorMessages()errorMessages(lineNum, tok, error);
 }

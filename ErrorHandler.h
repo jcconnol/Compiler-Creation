@@ -11,6 +11,7 @@
 #define ERRORHANDLER_H
 
 #include <string>
+#include "ErrorMethod.h"
 
 using std::string;
 
@@ -18,12 +19,13 @@ class ErrorHandler {
     
 public:
     ErrorHandler();
-    static void errorMessages(int);
+    static void errorMessages(int, Token, int);
     static void display();
     
     
 private:
     string errorMessage;
+    ErrorMethod errorMethod;
 };
 
 #endif /* ERRORHANDLER_H */

@@ -7,11 +7,10 @@
  *  won't be the best compiler out there.
  */
 
-#include <string>
+#include "ErrorMethod.h"
 
-using std::string;
+//string definitions
+const string ErrorMethod::NO_ERROR = "No Error";
+const string ErrorMethod::NO_FILE_FOUND = "No File found: ";
 
-struct ErrorMethod{
-    //string definitions
-    string NO_ERROR = "No Error";
-};
+

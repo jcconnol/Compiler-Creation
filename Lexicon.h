@@ -19,22 +19,25 @@
 #include <string>
 #include <vector>
 #include "Token.h"
+#include "ErrorHandler.h"
 
 using std::string;
 using std::vector;
 
 class Lexicon {
 public:
+    Lexicon();
     Lexicon(string fileName);
     void tokenize(string part);
     int read();
     vector<Token> getTokenized();
     void execute();
-    void errorCheck();
+    void errorCheck(int lineNum, Token tok, int error);
     
 private:
     string fileName;
     vector<Token> tokenized;
+    ErrorHandler errorHandler;
 };
 
 #endif /* LEXICON_H */
